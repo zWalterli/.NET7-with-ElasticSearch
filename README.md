@@ -1,8 +1,24 @@
 # .NET7-with-ElasticSearch
 
+## Ordem para iniciar o projeto:
 
-1. docker pull docker.elastic.co/elasticsearch/elasticsearch:7.10.0
+> Crie a imagem do Elastic Search 
+```
+docker pull docker.elastic.co/elasticsearch/elasticsearch:7.10.0
+```
+```
+docker network create elasticsearchnetwork
+```
+```
+docker run -d --name elasticsearch --net elasticsearchnetwork -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.10.0
+```
 
-2. docker network create elasticsearchnetwork
+> Clone o projeto
+```
+git clone https://github.com/zWalterli/.NET7-with-ElasticSearch.git
+```
 
-3. docker run -d --name elasticsearch --net elasticsearchnetwork -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.10.0
+> Execute o projeto
+```
+cd .NET7-with-ElasticSearch/Elastic.API && dotnet run
+```
